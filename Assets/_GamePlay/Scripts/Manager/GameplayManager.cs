@@ -53,7 +53,7 @@ namespace MoveStopMove.Manager
         
         public readonly List<PoolID> HairSkins = new List<PoolID>() { PoolID.Hair_Arrow, PoolID.Hair_Cowboy, PoolID.Hair_Headphone,PoolID.Hair_Ear, PoolID.Hair_Crown, PoolID.Hair_Horn, PoolID.Hair_Beard ,PoolID.None };
         public readonly List<PantSkin> PantSkins = new List<PantSkin>() { PantSkin.Batman, PantSkin.Chambi, PantSkin.Comy, PantSkin.Dabao, PantSkin.Onion, PantSkin.Pokemon, PantSkin.Rainbow, PantSkin.Skull, PantSkin.Vantim };
-        public readonly List<PoolID> WeaponNames = new List<PoolID>() { PoolID.Weapon_Axe1, PoolID.Weapon_Knife1, PoolID.Weapon_Axe2, PoolID.Weapon_Arrow };
+        public readonly List<PoolID> WeaponNames = new List<PoolID>() { /*PoolID.Weapon_Axe1, PoolID.Weapon_Knife1, PoolID.Weapon_Axe2, PoolID.Weapon_Arrow */PoolID.Weapon_1, PoolID.Weapon_2, PoolID.Weapon_3, PoolID.Weapon_4,PoolID.Weapon_5 };
 
         protected override void Awake()
         {

@@ -10,6 +10,12 @@ public enum PoolID
     Bullet_Knife1 = 2,
     Bullet_Axe2 = 3,
     Bullet_Arrow = 4,
+    Bullet_1 = 5,
+    Bullet_2 = 6,
+    Bullet_3 = 7,
+    Bullet_4 = 8,
+    Bullet_5 = 9,
+    Bullet_Player = 99,
     #endregion
 
     #region Weapon
@@ -17,6 +23,12 @@ public enum PoolID
     Weapon_Knife1 = 101,
     Weapon_Axe2 = 102,
     Weapon_Arrow = 103,
+    Weapon_1 = 104,
+    Weapon_2 = 105,
+    Weapon_3 = 106,
+    Weapon_4 = 107,
+    Weapon_5 = 108,
+    Weapon_Player = 199,
     #endregion
 
     #region Skins
@@ -60,6 +72,16 @@ namespace MoveStopMove.Manager
         GameObject Bullet_Axe2;
         [SerializeField]
         GameObject Bullet_Arrow;
+        [SerializeField]
+        GameObject Bullet_1;
+        [SerializeField]
+        GameObject Bullet_2;
+        [SerializeField]
+        GameObject Bullet_3;
+        [SerializeField]
+        GameObject Bullet_4;
+        [SerializeField]
+        GameObject Bullet_5;       
         #endregion
         #region Weapon
         [SerializeField]
@@ -70,6 +92,16 @@ namespace MoveStopMove.Manager
         GameObject Weapon_Axe2;
         [SerializeField]
         GameObject Weapon_Arrow;
+        [SerializeField]
+        GameObject Weapon_1;
+        [SerializeField]
+        GameObject Weapon_2;
+        [SerializeField]
+        GameObject Weapon_3;
+        [SerializeField]
+        GameObject Weapon_4;
+        [SerializeField]
+        GameObject Weapon_5;
         #endregion
         #region Hair
         [SerializeField]
@@ -114,15 +146,26 @@ namespace MoveStopMove.Manager
             PrefabPool.name = "PrefabPool";
 
             CreatePool(Character, PoolID.Character, Quaternion.Euler(0, 0, 0), 15);
+
             CreatePool(Bullet_Axe1, PoolID.Bullet_Axe1, Quaternion.Euler(0, 0, 0));
             CreatePool(Bullet_Knife1, PoolID.Bullet_Knife1, Quaternion.Euler(0, 0, 0));
             CreatePool(Bullet_Axe2, PoolID.Bullet_Axe2, Quaternion.Euler(0, 0, 0));
             CreatePool(Bullet_Arrow, PoolID.Bullet_Arrow, Quaternion.Euler(0, 0, 0));
+            CreatePool(Bullet_1, PoolID.Bullet_1, Quaternion.Euler(0, 0, 0));
+            CreatePool(Bullet_2, PoolID.Bullet_2, Quaternion.Euler(0, 0, 0));
+            CreatePool(Bullet_3, PoolID.Bullet_3, Quaternion.Euler(0, 0, 0));
+            CreatePool(Bullet_4, PoolID.Bullet_4, Quaternion.Euler(0, 0, 0));
+            CreatePool(Bullet_5, PoolID.Bullet_5, Quaternion.Euler(0, 0, 0));
 
             CreatePool(Weapon_Axe1, PoolID.Weapon_Axe1, Quaternion.Euler(0, 0, 0));
             CreatePool(Weapon_Knife1, PoolID.Weapon_Knife1, Quaternion.Euler(0, 0, 0));
             CreatePool(Weapon_Axe2, PoolID.Weapon_Axe2, Quaternion.Euler(0, 0, 0));
             CreatePool(Weapon_Arrow, PoolID.Weapon_Arrow, Quaternion.Euler(0, 0, 0));
+            CreatePool(Weapon_1, PoolID.Weapon_1, Quaternion.Euler(0, 0, 0));
+            CreatePool(Weapon_2, PoolID.Weapon_2, Quaternion.Euler(0, 0, 0));
+            CreatePool(Weapon_3, PoolID.Weapon_3, Quaternion.Euler(0, 0, 0));
+            CreatePool(Weapon_4, PoolID.Weapon_4, Quaternion.Euler(0, 0, 0));
+            CreatePool(Weapon_5, PoolID.Weapon_5, Quaternion.Euler(0, 0, 0));
 
             CreatePool(Hair_Arrow, PoolID.Hair_Arrow);
             CreatePool(Hair_Cowboy, PoolID.Hair_Cowboy);
@@ -143,14 +186,20 @@ namespace MoveStopMove.Manager
 
         public void CreatePool(GameObject obj, PoolID namePool, Quaternion quaternion = default, int numObj = 10)
         {
+            GameObject newPool = Instantiate(pool, Vector3.zero, Quaternion.identity);
+            newPool.transform.parent = PrefabPool.transform;
+            Pool poolScript = newPool.GetComponent<Pool>();
+            newPool.name = namePool.ToString();
+            poolScript.Initialize(obj, quaternion, numObj);
+
             if (!poolData.ContainsKey(namePool))
-            {
-                GameObject newPool = Instantiate(pool, Vector3.zero, Quaternion.identity);
-                newPool.transform.parent = PrefabPool.transform;
-                Pool poolScript = newPool.GetComponent<Pool>();
-                newPool.name = namePool.ToString();
-                poolScript.Initialize(obj, quaternion, numObj);
+            {               
                 poolData.Add(namePool, poolScript);
+            }
+            else
+            {
+                Destroy(poolData[namePool].gameObject);
+                poolData[namePool] = poolScript;
             }
         }
 

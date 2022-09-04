@@ -95,16 +95,19 @@ namespace MoveStopMove.Core.Data
         }
         public void OnInitData()
         {
+            PoolID weaponInitId = PoolID.Weapon_4;
+            PoolID hairInitId = PoolID.Hair_Arrow;
+            PantSkin pantInitId = PantSkin.Batman;
             #region Player Data
             #region Stats
             Speed = PlayerPrefs.GetFloat(Player.P_SPEED,3);
-            Weapon = PlayerPrefs.GetInt(Player.P_WEAPON, (int)PoolID.Weapon_Arrow);
+            Weapon = PlayerPrefs.GetInt(Player.P_WEAPON, (int)weaponInitId);
             #endregion
 
             #region Skins
             Color = PlayerPrefs.GetInt(Player.P_COLOR,0);
-            Pant = PlayerPrefs.GetInt(Player.P_PANT,(int)PantSkin.Batman);
-            Hair = PlayerPrefs.GetInt(Player.P_HAIR,(int)PoolID.Hair_Arrow);
+            Pant = PlayerPrefs.GetInt(Player.P_PANT,(int)pantInitId);
+            Hair = PlayerPrefs.GetInt(Player.P_HAIR,(int)hairInitId);
             Set = PlayerPrefs.GetInt(Player.P_SET,0);
             #endregion
             #region Poverty
@@ -132,9 +135,9 @@ namespace MoveStopMove.Core.Data
                 PantSkin2State.Add(pantSkinItems[i], GetDataState(PANT_SKIN_ITEM_NAME, (int)pantSkinItems[i], 0));
             }
 
-            PoolID2State[PoolID.Hair_Arrow] = 1;
-            PoolID2State[PoolID.Weapon_Arrow] = 1;
-            PantSkin2State[PantSkin.Batman] = 1;
+            PoolID2State[hairInitId] = 1;
+            PoolID2State[weaponInitId] = 1;
+            PantSkin2State[pantInitId] = 1;
 
             #endregion
             #endregion
@@ -146,46 +149,6 @@ namespace MoveStopMove.Core.Data
             PoolID2State.Clear();
             PantSkin2State.Clear();
             OnInitData();
-            //#region Player Data
-            //#region Stats
-            //SetFloatData(Player.P_SPEED,ref Speed, 3);
-            //SetIntData(Player.P_WEAPON,ref Weapon, (int)PoolID.Weapon_Arrow);
-            //#endregion
-
-            //#region Skins
-            //SetIntData(Player.P_COLOR,ref Color, 0);
-            //SetIntData(Player.P_PANT,ref Pant, (int)PantSkin.Batman);
-            //SetIntData(Player.P_HAIR,ref Hair, (int)PoolID.Hair_Arrow);
-            //SetIntData(Player.P_SET,ref Set, 0);
-            //#endregion
-
-            //#region Poverty
-            //SetIntData(Player.P_HIGHTEST_SCORE,ref HighestRank, 100);
-            //SetIntData(Player.P_CURRENT_REGION,ref CurrentRegion, 1);
-            //SetIntData(Player.P_CASH,ref Cash, 10000);
-
-            //List<PoolID> poolIdItems = GameplayManager.Inst.HairSkins;
-            //List<PantSkin> pantSkinItems = GameplayManager.Inst.PantSkins;
-
-            //for (int i = 0; i < poolIdItems.Count; i++)
-            //{
-            //    SetDataState(POOL_ID_ITEM_NAME, (int)poolIdItems[i], 0);
-            //    PoolID2State[poolIdItems[i]] = 0;
-            //}
-
-            //for (int i = 0; i < pantSkinItems.Count; i++)
-            //{
-            //    SetDataState(PANT_SKIN_ITEM_NAME, (int)pantSkinItems[i], 0);
-            //    PantSkin2State[pantSkinItems[i]] = 0;
-            //}
-
-            //SetDataState(POOL_ID_ITEM_NAME, (int)PoolID.Hair_Arrow, 1);
-            //PoolID2State[PoolID.Hair_Arrow] = 1;
-
-            //SetDataState(POOL_ID_ITEM_NAME, (int)PantSkin.Batman, 1);
-            //PantSkin2State[PantSkin.Batman] = 1;
-            //#endregion
-            //#endregion
         }
     }
 }

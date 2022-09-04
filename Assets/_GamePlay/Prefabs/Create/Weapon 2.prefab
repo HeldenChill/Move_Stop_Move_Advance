@@ -4391,10 +4391,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a82735bd259cb84db4089e001f56ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
-  BulletPoolName: 0
+  data: {fileID: 11400000, guid: 0906d5262dbe969429a3a4d370c948bd, type: 2}
+  BulletPoolName: 6
   WeaponType: 0
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 1412460752399621575}
   Character: {fileID: 0}
 --- !u!1 &6989465930904237913
 GameObject:
@@ -5798,7 +5798,7 @@ Transform:
   m_GameObject: {fileID: 8454522406846302157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 3284595431981109294}
   m_Father: {fileID: 6336649693718613383}
