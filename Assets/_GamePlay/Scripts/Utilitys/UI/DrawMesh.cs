@@ -211,7 +211,7 @@ public class DrawMesh : MonoBehaviour
             newGameObj.transform.localPosition = pointsData[i];
             pointObjects.Add(newGameObj);
         }
-        model.transform.position = Vector3.zero;
+        model.transform.position = transform.position;
         model.transform.eulerAngles = Vector3.zero;
         
     }
@@ -219,6 +219,7 @@ public class DrawMesh : MonoBehaviour
     float scale = 1f;
     private void CreateModel()
     {
+        model.transform.position = Vector3.zero;
         for (int i = 0; i < pointObjects.Count; i++)
         {
             Vector3 pos = pointObjects[i].transform.localPosition * scale / pointObjects[i].transform.localScale.x;

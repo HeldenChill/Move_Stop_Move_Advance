@@ -54,6 +54,9 @@ public enum PoolID
 namespace MoveStopMove.Manager
 {
     using Utilitys;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
     [DefaultExecutionOrder(-1)]
     public class PrefabManager : Singleton<PrefabManager>
@@ -72,6 +75,8 @@ namespace MoveStopMove.Manager
         GameObject Bullet_Axe2;
         [SerializeField]
         GameObject Bullet_Arrow;
+        [SerializeField]
+        GameObject Bullet;
         [SerializeField]
         GameObject Bullet_1;
         [SerializeField]
@@ -92,6 +97,8 @@ namespace MoveStopMove.Manager
         GameObject Weapon_Axe2;
         [SerializeField]
         GameObject Weapon_Arrow;
+        [SerializeField]
+        GameObject Weapon;
         [SerializeField]
         GameObject Weapon_1;
         [SerializeField]
@@ -156,6 +163,7 @@ namespace MoveStopMove.Manager
             CreatePool(Bullet_3, PoolID.Bullet_3, Quaternion.Euler(0, 0, 0));
             CreatePool(Bullet_4, PoolID.Bullet_4, Quaternion.Euler(0, 0, 0));
             CreatePool(Bullet_5, PoolID.Bullet_5, Quaternion.Euler(0, 0, 0));
+            CreatePool(Bullet, PoolID.Bullet_Player, Quaternion.Euler(0, 0, 0));
 
             CreatePool(Weapon_Axe1, PoolID.Weapon_Axe1, Quaternion.Euler(0, 0, 0));
             CreatePool(Weapon_Knife1, PoolID.Weapon_Knife1, Quaternion.Euler(0, 0, 0));
@@ -166,6 +174,7 @@ namespace MoveStopMove.Manager
             CreatePool(Weapon_3, PoolID.Weapon_3, Quaternion.Euler(0, 0, 0));
             CreatePool(Weapon_4, PoolID.Weapon_4, Quaternion.Euler(0, 0, 0));
             CreatePool(Weapon_5, PoolID.Weapon_5, Quaternion.Euler(0, 0, 0));
+            CreatePool(Weapon, PoolID.Weapon_Player, Quaternion.Euler(0, 0, 0));
 
             CreatePool(Hair_Arrow, PoolID.Hair_Arrow);
             CreatePool(Hair_Cowboy, PoolID.Hair_Cowboy);
@@ -181,6 +190,7 @@ namespace MoveStopMove.Manager
             CreatePool(Gift, PoolID.Gift);
             CreatePool(BaseWeapon, PoolID.BaseWeapon, Quaternion.identity, 5);
             CreatePool(ObjectCreateWeapon, PoolID.ObjectCreateWeapon, Quaternion.identity, 50);
+
         }
 
 
@@ -225,6 +235,18 @@ namespace MoveStopMove.Manager
             }
 
             return poolData[namePool].Pop();
+        }
+
+        public void SaveAsPrefab(GameObject gameObject, bool isNew = false)
+        {
+            if (gameObject == null) return;
+            string localPath = "Assets/_GamePlay/Resources/Weapon/" + gameObject.name + ".prefab";
+
+            if (isNew)
+            {
+                localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+            }
+            PrefabUtility.SaveAsPrefabAssetAndConnect(gameObject, localPath, InteractionMode.UserAction);
         }
 
     }

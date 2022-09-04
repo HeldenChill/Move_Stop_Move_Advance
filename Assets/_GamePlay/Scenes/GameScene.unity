@@ -1088,7 +1088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984538513074024779, guid: ee6606109b234294b909222cd62bd252, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 27.43
       objectReference: {fileID: 0}
     - target: {fileID: 5984538513074024779, guid: ee6606109b234294b909222cd62bd252, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1782,6 +1782,7 @@ MonoBehaviour:
   Bullet_Knife1: {fileID: 3624077002375939049, guid: 0eb98e3e4dd11b846aec847cd7d7ebee, type: 3}
   Bullet_Axe2: {fileID: 6022436429646713834, guid: 6d1bd9372f78f864f9aaf33e21f5aeb7, type: 3}
   Bullet_Arrow: {fileID: 3628063373359776792, guid: f329a6286f0e73047b87f05000c114e2, type: 3}
+  Bullet: {fileID: 4488479226294846797, guid: 7d9723fb542a99246986350375a21378, type: 3}
   Bullet_1: {fileID: 3397115495696131509, guid: 1dcf3e8b22e64e448b09397c6c31b539, type: 3}
   Bullet_2: {fileID: 6200625611124219178, guid: bdf6042406bca60499637ca405d6376e, type: 3}
   Bullet_3: {fileID: 6939123252140693928, guid: 37c2b41446c053146b21b5a42dbcb617, type: 3}
@@ -1791,6 +1792,7 @@ MonoBehaviour:
   Weapon_Knife1: {fileID: 5515967797501043881, guid: a67aa9b967ed8e34ca238221708e1e5a, type: 3}
   Weapon_Axe2: {fileID: 5342148423312906101, guid: a63fe999bb91150459f8041ea4e5e958, type: 3}
   Weapon_Arrow: {fileID: 2485118370923991048, guid: d900259350a2b8e4c8195f184b0dcef9, type: 3}
+  Weapon: {fileID: 9149211447470540435, guid: d949de95a69a2394ab21c5e072f4f852, type: 3}
   Weapon_1: {fileID: 8096758517119841202, guid: 879e3f836bee47241b4377b62ef81955, type: 3}
   Weapon_2: {fileID: 6745715965204961122, guid: 97203b66ef145fe4f90142fd2ec47c75, type: 3}
   Weapon_3: {fileID: 2852783733844266445, guid: 7bc1ec9371158aa4c97b5d96261c23fb, type: 3}

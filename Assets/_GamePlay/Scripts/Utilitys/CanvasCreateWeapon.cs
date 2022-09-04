@@ -31,6 +31,9 @@ public class CanvasCreateWeapon : UICanvas
 
             PrefabManager.Inst.CreatePool(drawMesh.WeaponObject, PoolID.Weapon_Player, Quaternion.Euler(0, 0, 0));
             PrefabManager.Inst.CreatePool(drawMesh.BulletObject, PoolID.Bullet_Player, Quaternion.Euler(0, 0, 0));
+            PrefabManager.Inst.SaveAsPrefab(drawMesh.WeaponObject);
+            PrefabManager.Inst.SaveAsPrefab(drawMesh.BulletObject);
+
             GameplayManager.Inst.PlayerScript.ChangeWeapon(weaponScript);
 
             drawMesh.ResetData();

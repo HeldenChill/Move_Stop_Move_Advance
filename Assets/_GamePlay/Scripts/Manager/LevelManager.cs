@@ -180,6 +180,7 @@ namespace MoveStopMove.Manager
 
             for(int i = 0; i < gifts.Count; i++)
             {
+                gifts[i].OnGiftDespawn -= OnGiftDespawn;
                 gifts[i].OnDespawn();
             }
 
