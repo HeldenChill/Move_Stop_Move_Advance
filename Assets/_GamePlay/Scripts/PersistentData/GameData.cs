@@ -95,7 +95,7 @@ namespace MoveStopMove.Core.Data
         }
         public void OnInitData()
         {
-            PoolID weaponInitId = PoolID.Weapon_4;
+            PoolID weaponInitId = PoolID.Weapon_Player;
             PoolID hairInitId = PoolID.Hair_Arrow;
             PantSkin pantInitId = PantSkin.Batman;
             #region Player Data

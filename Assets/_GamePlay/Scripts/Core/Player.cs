@@ -137,7 +137,6 @@ namespace MoveStopMove.Core
         private void LoadData()
         {
             
-            Data.Speed = GameData.Speed;
             Data.Weapon = GameData.Weapon;
 
             Data.Color = GameData.Color;

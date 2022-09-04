@@ -189,7 +189,7 @@ namespace MoveStopMove.Core
         public void SetLevel(int level)
         {
             Data.Level = level;
-            transform.localScale = Vector3.one * Data.Size;
+            PhysicModule.SetScale(GameConst.Type.Character ,Vector3.one * Data.Size);
         }
         protected virtual void Update()
         {
@@ -283,19 +283,7 @@ namespace MoveStopMove.Core
             //TODO: Increase Size of Attack Range Indicator
             SoundManager.Inst.PlaySound(SoundManager.Sound.Character_SizeUp, transform.position);           
             VFX_AddStatus.Play();
-            
-            if(Data.Level < 10)
-            {
-                PhysicModule.SetScale(GameConst.Type.Character, 1.1f);
-            }
-            else if(Data.Level < 20)
-            {
-                PhysicModule.SetScale(GameConst.Type.Character, 1.05f);
-            }
-            else
-            {
-                PhysicModule.SetScale(GameConst.Type.Character, 1.02f);
-            }
+            PhysicModule.SetScale(GameConst.Type.Character, Vector3.one * Data.Size);            
 
         }
 

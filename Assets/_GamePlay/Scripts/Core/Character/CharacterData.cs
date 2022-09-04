@@ -7,12 +7,13 @@ namespace MoveStopMove.Core.Data {
     public class CharacterData : ScriptableObject
     {
         public const float BASE_ATTACK_RANGE = 3f;
+        public const float BASE_SPEED = 3f;
 
         #region Stats
         private float size = 1;
         private int level = 1;
 
-        public float Speed = 3;
+        public float Speed => BASE_SPEED * (size * 0.2f + 0.8f);
         public int Score = 0;
 
         public float Size => size;
