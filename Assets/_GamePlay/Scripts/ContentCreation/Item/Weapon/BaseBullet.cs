@@ -18,6 +18,7 @@ namespace MoveStopMove.ContentCreation.Weapon
 
         float range;
         BaseCharacter parentCharacter;
+
         [SerializeField]
         LayerMask characterLayer;
         [SerializeField]
@@ -26,6 +27,8 @@ namespace MoveStopMove.ContentCreation.Weapon
         BulletType Type;
         [SerializeField]
         PoolID poolName;
+        [SerializeField]
+        BoxCollider boxCollider;
 
         [SerializeField]
         float rotationSpeed = 30f;
@@ -78,11 +81,14 @@ namespace MoveStopMove.ContentCreation.Weapon
             if(direction.sqrMagnitude > 0.001)
             {
                 transform.Translate(direction * lastSpeed,Space.World);
-            }
-
-            
-            
+            }                      
         }
+
+        public void SetSizeBoxCollider(Vector3 size)
+        {
+            boxCollider.size = size;
+        }
+
         public void OnHit(BaseCharacter character)
         {
             if(character != parentCharacter)

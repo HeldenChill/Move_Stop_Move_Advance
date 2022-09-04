@@ -198,7 +198,7 @@ namespace MoveStopMove.Manager
             }
             else
             {
-                Destroy(poolData[namePool].gameObject);
+                poolData[namePool].Delete();
                 poolData[namePool] = poolScript;
             }
         }

@@ -384,6 +384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDestroyOnClose: 0
   drawMesh: {fileID: 0}
+  screenCamera: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 80545519dff83634684bbb004cf8635e, type: 2}
 --- !u!1 &3306646224331877503
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +509,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3306646224083818372}
         m_TargetAssemblyTypeName: CanvasCreateWeapon, Assembly-CSharp
-        m_MethodName: CreateWeaponButton
+        m_MethodName: SaveWeaponButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -575,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -623,6 +625,7 @@ RectTransform:
   m_Children:
   - {fileID: 3306646224331877496}
   - {fileID: 2549654228517261431}
+  - {fileID: 2582352614489755628}
   m_Father: {fileID: 3306646224083818427}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -792,7 +795,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3306646224083818372}
         m_TargetAssemblyTypeName: CanvasCreateWeapon, Assembly-CSharp
-        m_MethodName: CreateWeaponButton
+        m_MethodName: ClearWeaponButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -802,3 +805,117 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &7164015181428682238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3306646224888276871}
+    m_Modifications:
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112083, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_Name
+      value: ReturnButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112093, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3306646224083818372}
+    - target: {fileID: 4665146320489112093, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665146320489112093, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CanvasCreateWeapon, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+--- !u!224 &2582352614489755628 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4665146320489112082, guid: 3b15ebae1c8c50d4faf0f1d1ee8f4d21, type: 3}
+  m_PrefabInstance: {fileID: 7164015181428682238}
+  m_PrefabAsset: {fileID: 0}

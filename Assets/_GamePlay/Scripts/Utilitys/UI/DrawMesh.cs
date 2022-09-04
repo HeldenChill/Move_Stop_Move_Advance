@@ -216,6 +216,7 @@ public class DrawMesh : MonoBehaviour
         
     }
     float posZModel;
+    float scale = 1f;
     private void CreateModel()
     {
         for (int i = 0; i < pointObjects.Count; i++)
@@ -241,7 +242,7 @@ public class DrawMesh : MonoBehaviour
 
 
 
-    float scale = 1f;
+    private readonly Vector3 MODEL_SCALE = new Vector3(0.05f,0.05f,0.05f);  
     public void CreateWeaponAndBullet()
     {
         CreateModel();
@@ -257,6 +258,7 @@ public class DrawMesh : MonoBehaviour
 
         GameObject modelObj = Instantiate(model);
         modelObj.transform.parent = weapon.transform.GetChild(0).transform;
+        modelObj.transform.localScale = MODEL_SCALE;
         weapon.AddComponent<HorizontalWeapon>();
         return weapon;
     }
@@ -268,11 +270,24 @@ public class DrawMesh : MonoBehaviour
 
         GameObject modelObj = Instantiate(model);
         modelObj.transform.parent = bullet.transform;
+        modelObj.transform.localScale = MODEL_SCALE;
         return bullet;
     }
 
     public void ResetData()
-    {      
+    {
+        bullet = null;
+        weapon = null;
+
+        pointsData.Clear();
+        mesh.Clear();
+        pointObjects.Clear();
+        Destroy(model);
+
+    }
+
+    public void DestroyData()
+    {
         Destroy(bullet);
         Destroy(weapon);
     }

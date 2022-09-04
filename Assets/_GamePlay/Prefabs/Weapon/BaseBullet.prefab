@@ -51,7 +51,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   Type: 1
-  poolName: 0
+  poolName: 99
+  boxCollider: {fileID: 3960136097233357220}
   rotationSpeed: 20
   speed: 0.1
   SelfCharacterCollider: {fileID: 0}

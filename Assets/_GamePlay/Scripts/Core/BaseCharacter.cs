@@ -99,6 +99,7 @@ namespace MoveStopMove.Core
             PhysicModule.SetRotation(GameConst.Type.Model, Quaternion.Euler(0, 0, 0));
             PhysicModule.SetRotation(GameConst.Type.Sensor, Quaternion.Euler(0, 0, 0));          
             Data.AttackCount = 0;
+            Data.BaseAttackRange = CharacterData.BASE_ATTACK_RANGE;
             OnEnable();
             ((CharacterLogicModule)LogicModule).StartStateMachine();            
         }

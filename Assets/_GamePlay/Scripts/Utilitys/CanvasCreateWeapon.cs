@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilitys;
 using MoveStopMove.Manager;
+using MoveStopMove.ContentCreation;
+using MoveStopMove.ContentCreation.Weapon;
 
 public class CanvasCreateWeapon : UICanvas
 {
+    private readonly Vector3 BOX_COLLIDER_SIZE_BULLET = new Vector3(0.7f, 0.7f, 0.5f);
     [SerializeField]
     DrawMesh drawMesh;
     [SerializeField]
     Camera screenCamera;
+    [SerializeField] 
+    ItemData weaponData;
+
     private int oldWeapon = 0;
 
     public void SaveWeaponButton()
@@ -18,16 +24,31 @@ public class CanvasCreateWeapon : UICanvas
         if(drawMesh.WeaponObject.GetInstanceID() != oldWeapon)
         {
             oldWeapon = drawMesh.WeaponObject.GetInstanceID();
+
+            BaseWeapon weaponScript = Cache.GetBaseWeapon(drawMesh.WeaponObject);
+            weaponScript.SetData(PoolID.Bullet_Player, WeaponType.Normal, weaponData);
+            Cache.GetBaseBullet(drawMesh.BulletObject).SetSizeBoxCollider(BOX_COLLIDER_SIZE_BULLET);
+
             PrefabManager.Inst.CreatePool(drawMesh.WeaponObject, PoolID.Weapon_Player, Quaternion.Euler(0, 0, 0));
             PrefabManager.Inst.CreatePool(drawMesh.BulletObject, PoolID.Bullet_Player, Quaternion.Euler(0, 0, 0));
+            GameplayManager.Inst.PlayerScript.ChangeWeapon(weaponScript);
+
             drawMesh.ResetData();
-            Close();
+            CloseButton();
         }
     }
 
-    public void ClearButton()
+    public void ClearWeaponButton()
     {
         drawMesh.ResetData();
+    }
+
+    public void CloseButton()
+    {
+        UIManager.Inst.OpenUI(UIID.UICMainMenu);
+        GameplayManager.Inst.SetCameraPosition(CameraPosition.MainMenu);
+        SoundManager.Inst.PlaySound(SoundManager.Sound.Button_Click);
+        Close();
     }
     public void CreateWeaponButton()
     {

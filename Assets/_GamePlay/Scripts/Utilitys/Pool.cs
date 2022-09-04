@@ -66,6 +66,15 @@ namespace Utilitys
             return returnObj;
         }
 
+        public void Delete()
+        {
+            while(objects.Count > 0)
+            {
+                Destroy(objects.Dequeue());
+            }
+            Destroy(gameObject);
+        }
+
     }
 }
 

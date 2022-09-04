@@ -30,5 +30,13 @@ namespace MoveStopMove.ContentCreation.Weapon
         {
             SoundManager.Inst.PlaySound(SoundManager.Sound.Weapon_Throw,gameObject.transform.position);
         }
+
+        public void SetData(PoolID BulletPoolName, WeaponType WeaponType,ItemData data)
+        {
+            this.BulletPoolName = BulletPoolName;
+            this.WeaponType = WeaponType;
+            this.data = data;
+            firePoint = transform;
+        }
     }
 }

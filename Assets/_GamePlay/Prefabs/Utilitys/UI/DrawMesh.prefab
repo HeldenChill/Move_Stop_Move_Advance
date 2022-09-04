@@ -98,4 +98,10 @@ MonoBehaviour:
   smoothness: 0.1
   samplePeriodicDistance: 0.1
   z: 0.1
+  cameraMesh: {fileID: 0}
+  offset: {x: 0, y: 0}
+  size: {x: 0, y: 0}
+  baseWeapon: {fileID: 5618273737373822372, guid: 2502da38ba921e046b980471ca5fb9bd, type: 3}
+  baseBullet: {fileID: 3960136097233357223, guid: 62ccbfdbd1557e64ebdaa7274f937b3c, type: 3}
   obj: {fileID: 7874771411103903161, guid: 529b556c2f4ea6945bae82ad11051267, type: 3}
+  parentObj: {fileID: 4079419275945414987, guid: 73f1aa54b6d45d349a8303e9914285bd, type: 3}
