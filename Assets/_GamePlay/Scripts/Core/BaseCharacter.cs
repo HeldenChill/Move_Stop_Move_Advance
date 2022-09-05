@@ -26,6 +26,7 @@ namespace MoveStopMove.Core
         public event Action<BaseCharacter> OnDie;
         public const float GIFT_BONUS = 1.6f;
 
+        BaseAttackInfo data = new BaseAttackInfo();
         protected VisualEffectController VFX_Hit;
         protected VisualEffectController VFX_AddStatus;
 
@@ -53,7 +54,7 @@ namespace MoveStopMove.Core
         protected AbstractPhysicModule PhysicModule;
         [SerializeField]
         protected AnimationModule AnimModule;
-
+        
 
         protected CharacterWorldInterfaceSystem WorldInterfaceSystem;
         protected CharacterNavigationSystem NavigationSystem;
@@ -204,14 +205,27 @@ namespace MoveStopMove.Core
             LogicSystem.FixedUpdateData();
         }
 
+        
         protected virtual void DealDamage(Vector3 direction, float range)
-        {
-            Weapon.DealDamage(direction, range ,Data.Size);
+        {           
+            data.direction = direction;
+            data.range = range;
+            data.scale = Data.Size;
+            data.speedRatio = Data.Speed / CharacterData.BASE_SPEED;
+            data.isSpecial = false;
+
+            Weapon.DealDamage(data);
         }
 
         protected virtual void DealDamage(Vector3 direction, float range, bool isSpecial)
         {
-            Weapon.DealDamage(direction, range, Data.Size, isSpecial);
+            data.direction = direction;
+            data.range = range;
+            data.scale = Data.Size;
+            data.speedRatio = Data.Speed;
+            data.isSpecial = isSpecial;
+
+            Weapon.DealDamage(data);
         }
 
         public virtual void ChangeColor(GameColor color)

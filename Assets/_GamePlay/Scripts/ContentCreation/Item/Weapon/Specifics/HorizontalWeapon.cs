@@ -12,18 +12,18 @@ namespace MoveStopMove.ContentCreation.Weapon
             SetTranformData();
         }
 
-        public override void DealDamage(Vector3 direction, float range, float size, bool isSpecial = false)
+        public override void DealDamage(BaseAttackInfo data)
         {
-            base.DealDamage(direction, range, size, isSpecial);
+            base.DealDamage(data);
             if (WeaponType == WeaponType.Normal)
             {
                 GameObject bullet = PrefabManager.Inst.PopFromPool(BulletPoolName);
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = Quaternion.Euler(-90, 0, transform.rotation.eulerAngles.z);
-                bullet.transform.localScale = Vector3.one * size;
+                bullet.transform.localScale = Vector3.one * data.scale;
 
                 BaseBullet bulletScript = Cache.GetBaseBullet(bullet);
-                bulletScript.OnFire(direction, range, Character, isSpecial);
+                bulletScript.OnFire(data, Character);
             }
         }
     }

@@ -12,6 +12,14 @@ public enum WeaponType
 namespace MoveStopMove.ContentCreation.Weapon
 {
     using Manager;
+    public struct BaseAttackInfo
+    {
+        public Vector3 direction;
+        public float range;
+        public float scale;
+        public bool isSpecial;
+        public float speedRatio;
+    }
     public abstract class BaseWeapon : Item
     {
         float Range;
@@ -26,7 +34,7 @@ namespace MoveStopMove.ContentCreation.Weapon
         public BaseCharacter Character;
         public PoolID Name => data.poolID;
              
-        public virtual void DealDamage(Vector3 direction, float range, float scale, bool isSpecial = false)
+        public virtual void DealDamage(BaseAttackInfo data)
         {
             SoundManager.Inst.PlaySound(SoundManager.Sound.Weapon_Throw,gameObject.transform.position);
         }

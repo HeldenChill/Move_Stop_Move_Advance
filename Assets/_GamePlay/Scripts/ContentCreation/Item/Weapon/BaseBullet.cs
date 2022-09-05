@@ -102,13 +102,13 @@ namespace MoveStopMove.ContentCreation.Weapon
             }
         }
 
-        public void OnFire(Vector3 direction,float range,BaseCharacter parentCharacter, bool isSpecial = false)
+        public void OnFire(BaseAttackInfo data,BaseCharacter parentCharacter)
         {
-            direction.y = 0;
-            this.direction = direction.normalized;          
-            this.range = range - lastSpeed * 6;
+            data.direction.y = 0;
+            this.direction = data.direction.normalized;          
+            this.range = data.range - lastSpeed * 6; 
             this.parentCharacter = parentCharacter;
-            this.isSpecial = isSpecial;
+            this.isSpecial = data.isSpecial;
 
             if (isSpecial)
             {
@@ -117,7 +117,7 @@ namespace MoveStopMove.ContentCreation.Weapon
             }
             else
             {
-                currentSpeed = speed;
+                currentSpeed = speed * data.speedRatio;
             }
 
             if(Type == BulletType.Normal)

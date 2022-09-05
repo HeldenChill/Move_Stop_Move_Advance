@@ -13,18 +13,19 @@ namespace MoveStopMove.ContentCreation.Weapon
         {
             SetTranformData();
         }
-        public override void DealDamage(Vector3 direction, float range, float size, bool isSpecial = false)
+        public override void DealDamage(BaseAttackInfo data)
         {
-            base.DealDamage(direction, range, size,isSpecial);
+            base.DealDamage(data);
             if(WeaponType == WeaponType.Has3Ray)
             {
 
-                float angle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up) + 90;
+                float angle = Vector3.SignedAngle(Vector3.forward, data.direction, Vector3.up) + 90;
 
 
                 Vector3 direction1 = MathHelper.AngleToVector(angle + 30);
                 direction1.z = direction1.y;
-                direction.y = 0;
+                direction1.y = 0;
+
                 Vector3 direction2 = MathHelper.AngleToVector(angle - 30);
                 direction2.z = direction2.y;
                 direction2.y = 0;
@@ -33,24 +34,24 @@ namespace MoveStopMove.ContentCreation.Weapon
 
                 GameObject bullet = PrefabManager.Inst.PopFromPool(BulletPoolName);
                 bullet.transform.position = firePoint.position;
-                bullet.transform.localScale = Vector3.one * size;
+                bullet.transform.localScale = Vector3.one * data.scale;
 
                 GameObject bullet1 = PrefabManager.Inst.PopFromPool(BulletPoolName);
                 bullet1.transform.position = firePoint.position;
-                bullet1.transform.localScale = Vector3.one * size;
+                bullet1.transform.localScale = Vector3.one * data.scale;
 
                 GameObject bullet2 = PrefabManager.Inst.PopFromPool(BulletPoolName);
                 bullet2.transform.position = firePoint.position;
-                bullet2.transform.localScale = Vector3.one * size;
+                bullet2.transform.localScale = Vector3.one * data.scale;
 
                 BaseBullet bulletScript = Cache.GetBaseBullet(bullet);
-                bulletScript.OnFire(direction, range, Character,isSpecial);
+                bulletScript.OnFire(data, Character);
 
                 BaseBullet bulletScript1 = Cache.GetBaseBullet(bullet1);
-                bulletScript1.OnFire(direction1, range, Character,isSpecial);
+                bulletScript1.OnFire(data, Character);
 
                 BaseBullet bulletScript2 = Cache.GetBaseBullet(bullet2);
-                bulletScript2.OnFire(direction2, range, Character,isSpecial);
+                bulletScript2.OnFire(data, Character);
             }        
         }
     }
